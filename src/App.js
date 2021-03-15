@@ -32,7 +32,7 @@ const startingPosition = {
   //  6) Stops all penalties
   //  7) Greys out screen
 
-let id;
+let snakeInterval;
 
 class App extends Component {
 
@@ -44,6 +44,7 @@ class App extends Component {
       [0,0],
       [2,0],
     ],
+    startButton: "Start"
   }
 
   componentDidMount() {
@@ -60,13 +61,27 @@ class App extends Component {
 
   startGame = event => {
     console.log("read")
-    id = setInterval(this.moveSnake, 200)
+    snakeInterval = setInterval(this.moveSnake, 200)
     document.onkeydown = this.onKeyDown
   }
 
+  // startGame = event => {
+
+  //   if (this.state.startButton = "Start") {
+  //     snakeInterval = setInterval(this.moveSnake, 200)
+  //     document.onkeydown = this.onKeyDown
+  //     this.setState({startButton: "Pause"})
+  //     console.log(this.state.start)
+  //   } else if (this.state.startButton = "Pause"){
+  //     console.log("read")
+  //     clearInterval(snakeInterval)
+  //     this.setState({startButton: "Start"})
+  //   }
+  // }
+
   pauseGame() {
-    clearInterval(id)
-    // setInterval(this.state.pauseSnake, )
+    clearInterval(snakeInterval)
+    // this.state.startButton = "Start"
   }
 
   pauseSnake = () => {
@@ -190,13 +205,12 @@ class App extends Component {
   }
 
   onGameOver() {
-    alert(`Game Over. Your score is ${this.state.snakeDots.length}`)
+    alert(`Game Over. Your score is ${(this.state.snakeDots.length - 2)}`)
 
     // document.getElementById("gameOverSlide").style.display = 'flex'
 
     this.setState(startingPosition)
-    clearInterval(this.intervalId)  
-
+    clearInterval(snakeInterval) 
   }
 
   render(){
@@ -206,23 +220,26 @@ class App extends Component {
         </div>
         <div className="headSection">
           <div className="mainSnakeHeadline">Snake</div>
+        
+          <div className="mainSubhead">Eat the Apples</div>
         </div>
         <main id="gameArea">
           <Snake snakeDots={this.state.snakeDots}/>
           <Food dot={this.state.food}/>
-
-          {/* <div className="snake-dot" style={{top:0, left:0}}></div>
-          <div className="snake-dot" style={{top:0, left:'2%'}}></div>
-          <div className="snake-dot" style={{top:0, left:'4%'}}></div> */}
         
         </main>
+        <div className="scoreSection">
+          <div className="foodScoreSymbol"/>
+          <div className="scoreCopy">Score:</div>
+          <div className="scoreAmount">{(this.state.snakeDots.length -2)}</div>
+        </div>
         <div className="buttonSection">
             <button 
               className="bothStartPauseButtons" 
               id="startButton"
               onClick={this.startGame}
             >
-              Start
+              {this.state.startButton}
             </button>
             <button 
               className="bothStartPauseButtons" 

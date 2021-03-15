@@ -22,11 +22,25 @@ body {
 
   /* font-family: 'Press Start 2P', cursive; */
 
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 0px;
+  margin-bottom: -25px;
 }
 
-/* ACTUAL GAME */
+.mainSubhead {
+  text-align: center;
+
+  color: rgb(214, 42, 42);
+
+  font-size: 50px;
+  font-family: 'Lalezar';
+
+  /* font-family: 'Press Start 2P', cursive; */
+
+  margin-top: 0px;
+  margin-bottom: 15px;
+}
+
+/* GAME AREA */
 
 #gameArea {
   position: relative;
@@ -41,6 +55,60 @@ body {
   background: url("./images/snakeBackgroundLevel1.png");  
   /* background-color: rgb(8,28,99); */
 }
+
+.scoreSection {
+  justify-content: center;
+  display : flex;
+
+  /* display: inline-block; */
+
+  margin-top: 40px;
+}
+
+.foodScoreSymbol {
+  display: inline;
+
+  margin-top: 20px;
+  margin-right: 15px;
+  margin-left: -30px;
+  
+  width: 30px;
+  height: 30px;
+  background: red;
+  border: 1px solid #fff;
+  border-radius: 25px;
+  
+  z-index: 1;
+}
+
+.scoreCopy {
+  text-align: center;
+
+  color: white;
+
+  font-size: 50px;
+  font-family: 'Lalezar';
+
+  /* font-family: 'Press Start 2P', cursive; */
+
+  /* margin-bottom: 15px; */
+
+  display: inline;
+}
+
+.scoreAmount {
+  text-align: center;
+
+  color: white;
+
+  font-size: 50px;
+  font-family: 'Lalezar';
+
+  margin-left: 15px;
+  display: inline;
+}
+
+/* SNAKE AND FOOD */
 
 .snake-dot {
   position: absolute;
